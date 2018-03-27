@@ -3,7 +3,7 @@ public class Main{
 
     public static void main(String[] args){
         Scanner scanIn = new Scanner(System.in);
-        System.out.print("Choose your task:  \n 1.Snails journey \n 2.Stepik 2.4 \n Snails journey \n exit. Exit program \n>");
+        System.out.print("Choose your task:  \n 1.Snails journey \n 2.Stepik 2.4 \n 3.Stepik 3.3 moveRobot \n exit. Exit program \n>");
         String strIn = scanIn.nextLine();
         while (!strIn.equals("exit")){
             System.out.print("Your choise:"+strIn +"\n>");
@@ -12,7 +12,7 @@ public class Main{
                     break;
                 case "2": stepik_2_4();
                     break;
-                //case "":
+                case "3": moveRobot();
                 //case "":
                 default: System.out.print("Bull shit! Try again!");
             }
@@ -69,13 +69,33 @@ public class Main{
             return strOut.toString();
         }
 
+    static void moveRobot() { //stepik_3_3
+
+        Robot robot = new Robot(0,0,Direction.UP);
+        int toX = 3;
+        int toY = 0;
 
 
+        //static void moveRobot(Robot robot, int toX, int toY) {
+        Direction xDirection = robot.getX()>toX? Direction.LEFT : Direction.RIGHT;
+        Direction yDirection = robot.getY()>toY? Direction.DOWN : Direction.UP;
 
-
-
+            while (robot.getDirection()!=xDirection){//поворачиваем налево
+                robot.turnRight();
+            }
+            while (robot.getX()!=toX){
+                robot.stepForward();
+            }
+            while (robot.getDirection()!=yDirection){//поворачиваем налево
+                robot.turnRight();
+            }
+            while (robot.getY()!=toY){
+                robot.stepForward();
+            }
+        }
 
     }
+
 
 
 
